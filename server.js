@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+//var exports = module.exports = {};
 var knex = require('./db/knex');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,6 +21,6 @@ app.post('/ideas', function(req, res) {
   });
 });
 
-app.listen(3000, function(){
+var server = app.listen(3000, function(){
   console.log('Listening on Port 3000');
 });
