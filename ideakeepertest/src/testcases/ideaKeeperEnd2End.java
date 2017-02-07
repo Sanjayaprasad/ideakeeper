@@ -1,48 +1,35 @@
-package testcases;
+//package testcases;
 
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 public class ideaKeeperEnd2End {
 	WebDriver driver =  null;
-	public void init() {
+	private void init(){
 		if(driver==null){
 			System.setProperty("webdriver.chrome.driver", "/Users/solutionsiq/Downloads/chromedriver");
-			driver = new ChromeDriver();
-			driver.get("http://localhost:3000");
-			//retrun driver.get("http://localhost:3000");
-		}	
-	}
-
-	@Before
-	public void setUp() throws Exception {
-		//WebDriver driver =  null;
+			 driver = new ChromeDriver(); 
+			 driver.get("http://localhost:3000");
+		}
 		
 	}
-
-	@After
-	public void tearDown() throws Exception {
-		
-	}
-	
     @Test
 	public void shouldAcceptNullStringAsAnIdea() {
-		String checkVal = "Text added";
-		init();
-		driver.findElement(By.name("idea")).sendKeys(checkVal);
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		List<WebElement> list = driver.findElements(By.id("list"));
-	    //System.out.println("text is :"+list.get(list.size()-1).getText());
-	    Assert.assertEquals(list.get(list.size()-1).getText(),checkVal);
-	    //System.out.println("Text added below");
+		String checkVal = "Text added below";
+				init();
+				driver.findElement(By.name("idea")).sendKeys(checkVal);
+				driver.findElement(By.xpath("//button[@type='submit']")).click();
+				List<WebElement> list = driver.findElements(By.id("list"));
+			    System.out.println("text is :"+list.get(list.size()-1).getText());
+			    Assert.assertEquals(list.get(list.size()-1).getText(),checkVal);
+			    System.out.println("Text added below");
 	}
 	
 	@Test
@@ -78,4 +65,5 @@ public class ideaKeeperEnd2End {
 			    Assert.assertEquals(list.get(list.size()-1).getText(),checkVal);
 			    System.out.println("Item Added");
 			    }
+		
 }
