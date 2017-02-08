@@ -65,5 +65,19 @@ public class ideaKeeperEnd2End {
 			    Assert.assertEquals(list.get(list.size()-1).getText(),checkVal);
 			    System.out.println("Item Added");
 			    }
-		
+
+@Test
+	public void shouldAcceptTextAndMustBeAbleToDisplayMinimumOf200Ideas() throws InterruptedException{
+		String checkVal = "Text";
+			init();
+			List<WebElement> list = driver.findElements(By.id("list"));
+			System.out.println("Size is"+list.size());
+			driver.findElement(By.name("idea")).sendKeys(checkVal);
+			driver.findElement(By.xpath("//button[@type='submit']")).click();
+			List<WebElement> list1 = driver.findElements(By.id("list"));
+			Thread.sleep(1000);
+			System.out.println("size is:"+list1.size());
+			boolean listsize = list.size() != list1.size();
+			Assert.assertTrue(listsize);
+	}		
 }
